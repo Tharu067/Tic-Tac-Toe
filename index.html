@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Tic-Tac-Toe | Play Web Game</title>
+  <meta name="description" content="A modern, neon-styled Tic-Tac-Toe web game playable vs AI or in 2-Player mode with sound effects and score tracking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-glow glow-1"></div>
+  <div class="background-glow glow-2"></div>
+
+  <main class="game-container" id="game-container">
+    <header class="game-header">
+      <h1 class="game-title">TIC TAC <span class="accent-text">TOE</span></h1>
+      <p class="game-subtitle">Classic game with modern neon vibes</p>
+      
+      <div class="controls-top">
+        <button id="sound-toggle-btn" class="icon-btn" title="Toggle Sound" aria-label="Toggle Sound">
+          <span id="sound-icon">🔊</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Game Mode Selector -->
+    <section class="mode-selector" aria-label="Game Mode">
+      <button class="mode-btn active" data-mode="pvp" id="mode-pvp">
+        <span class="mode-icon">👥</span> 2 Players
+      </button>
+      <button class="mode-btn" data-mode="ai-easy" id="mode-ai-easy">
+        <span class="mode-icon">🤖</span> vs AI (Easy)
+      </button>
+      <button class="mode-btn" data-mode="ai-hard" id="mode-ai-hard">
+        <span class="mode-icon">⚡</span> vs AI (Smart)
+      </button>
+    </section>
+
+    <!-- Turn Status Banner -->
+    <div class="status-card" id="status-card">
+      <span class="turn-indicator" id="turn-indicator">
+        Player <span class="player-mark x-mark" id="current-player-display">X</span>'s Turn
+      </span>
+    </div>
+
+    <!-- Score Board -->
+    <section class="scoreboard" aria-label="Scoreboard">
+      <div class="score-card player-x-card">
+        <span class="score-label" id="player-x-label">Player X</span>
+        <span class="score-value" id="score-x">0</span>
+      </div>
+      <div class="score-card ties-card">
+        <span class="score-label">Ties</span>
+        <span class="score-value" id="score-ties">0</span>
+      </div>
+      <div class="score-card player-o-card">
+        <span class="score-label" id="player-o-label">Player O</span>
+        <span class="score-value" id="score-o">0</span>
+      </div>
+    </section>
+
+    <!-- 3x3 Game Board Grid -->
+    <section class="board-wrapper" id="board-wrapper">
+      <div class="board" id="board" role="grid" aria-label="Tic Tac Toe Board">
+        <button class="cell" data-index="0" id="cell-0" role="gridcell" aria-label="Top Left Cell"></button>
+        <button class="cell" data-index="1" id="cell-1" role="gridcell" aria-label="Top Middle Cell"></button>
+        <button class="cell" data-index="2" id="cell-2" role="gridcell" aria-label="Top Right Cell"></button>
+        <button class="cell" data-index="3" id="cell-3" role="gridcell" aria-label="Middle Left Cell"></button>
+        <button class="cell" data-index="4" id="cell-4" role="gridcell" aria-label="Center Cell"></button>
+        <button class="cell" data-index="5" id="cell-5" role="gridcell" aria-label="Middle Right Cell"></button>
+        <button class="cell" data-index="6" id="cell-6" role="gridcell" aria-label="Bottom Left Cell"></button>
+        <button class="cell" data-index="7" id="cell-7" role="gridcell" aria-label="Bottom Middle Cell"></button>
+        <button class="cell" data-index="8" id="cell-8" role="gridcell" aria-label="Bottom Right Cell"></button>
+      </div>
+      <!-- SVG line to draw winning strike -->
+      <svg class="strike-overlay" id="strike-overlay">
+        <line id="strike-line" x1="0" y1="0" x2="0" y2="0" />
+      </svg>
+    </section>
+
+    <!-- Action Buttons -->
+    <footer class="game-actions">
+      <button class="action-btn primary" id="restart-btn">
+        <span class="btn-icon">🔄</span> Play Again
+      </button>
+      <button class="action-btn secondary" id="reset-scores-btn">
+        <span class="btn-icon">🗑️</span> Reset Scores
+      </button>
+    </footer>
+  </main>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
